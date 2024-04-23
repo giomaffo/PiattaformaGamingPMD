@@ -17,4 +17,4 @@ PiattaformaGaming: Rappresenta la piattaforma di gaming nel suo complesso.
 
 Repository:
 
-All'interno della repository troverete tutto il necessario per comprendere e contribuire al progetto. I progressi verranno caricati man mano che il lavoro procede.
+All'interno della repository verrà caricato tutto il necessario per comprendere il progetto. I progressi verranno caricati man mano che il lavoro procede.

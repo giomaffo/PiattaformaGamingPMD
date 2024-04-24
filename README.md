@@ -12,20 +12,20 @@ Le classi principali incluse in questo progetto sono:
 
 - **PersonaggioGiocabile**: Rappresenta i personaggi giocabili all'interno dei videogiochi.
   - Attributi:
-    - `id`: identificatore univoco del personaggio.
-    - `nome`: il nome del personaggio giocabile.
-    - `livello`: il livello del personaggio giocabile.
-    - `puntiVita`: i punti vita del personaggio giocabile.
-    - `attacco`: il valore di attacco del personaggio giocabile.
-    - `difesa`: il valore di difesa del personaggio giocabile.
-    - `skillPoints`: gli skill points disponibili per l'utente.
-    - `ultimaModifica`: un attributo di tipo `LocalDateTime` che tiene traccia della data e dell'ora dell'ultima modifica apportata al personaggio giocabile.
+    - private int `id`: identificatore univoco del personaggio.
+    - private String `nome`: il nome del personaggio giocabile.
+    - private int `livello`: il livello del personaggio giocabile.
+    - private int `puntiVita`: i punti vita del personaggio giocabile.
+    - private int `attacco`: il valore di attacco del personaggio giocabile.
+    - private int `difesa`: il valore di difesa del personaggio giocabile.
+    - private int `skillPoints`: gli skill points disponibili per l'utente.
+    - private LocalDateTime `ultimaModifica`: un attributo che tiene traccia della data e dell'ora dell'ultima modifica apportata al personaggio giocabile.
 
 - **Videogioco**: Rappresenta i videogiochi disponibili sulla piattaforma.
   - Attributi:
-    - `titolo`: il titolo del videogioco.
-    - `genere`: il genere del videogioco.
-    - `annoPubblicazione`: l'anno di pubblicazione del videogioco.
+    - private String `titolo`: il titolo del videogioco.
+    - private String `genere`: il genere del videogioco.
+    - private int `annoPubblicazione`: l'anno di pubblicazione del videogioco.
   - Metodi:
     - `getTitolo()`: restituisce il titolo del videogioco.
     - `getGenere()`: restituisce il genere del videogioco.
@@ -33,8 +33,8 @@ Le classi principali incluse in questo progetto sono:
 
 - **PiattaformaGaming**: Rappresenta la piattaforma di gaming nel suo complesso.
   - Attributi:
-    - Lista di Videogiochi: un elenco dei videogiochi presenti sulla piattaforma.
-    - Lista di PersonaggiGiocabili: un elenco dei personaggi giocabili presenti sulla piattaforma.
+    - private ArrayList<Videogioco> `videogiochi`: un elenco dei videogiochi presenti sulla piattaforma.
+    - private ArrayList<PersonaggioGiocabile> `personaggiGiocabili`: un elenco dei personaggi giocabili presenti sulla piattaforma.
   - Metodi:
     - `aggiungiVideogioco(Videogioco videogioco)`: aggiunge un videogioco alla piattaforma.
     - `rimuoviVideogioco(String titolo)`: rimuove un videogioco dalla piattaforma.

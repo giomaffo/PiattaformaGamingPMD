@@ -48,7 +48,7 @@ Le classi principali incluse in questo progetto sono:
     - `aggiungiPersonaggioGiocabile(PersonaggioGiocabile personaggio, String titoloVideogioco)`: permette allo sviluppatore del gioco di aggiungere un nuovo personaggio giocabile a un videogioco esistente.
     - `eliminaPersonaggioGiocabile(String nomePersonaggio, String titoloVideogioco)`: consente allo sviluppatore del gioco di eliminare un personaggio giocabile da un videogioco.
     - `ricercaPersonaggioGiocabile(String criterio, String valore)`: consente agli utenti di cercare un personaggio giocabile in un videogioco in base al nome o alla classe.
-    - `aggiornaDettagliPersonaggioGiocabile(String nomePersonaggio, String attributo, int valore)`: permette agli utenti di aggiornare i dettagli di un personaggio giocabile come ad esempio, i punti vita, l'attacco o la difesa.
+   - `aggiornaDettagliPersonaggioGiocabile(String nomePersonaggio, String attributo, int valore)`: permette agli utenti di aggiornare i dettagli di un personaggio giocabile, come ad esempio i punti vita,     l'attacco o la difesa. Gli skill points sono un valore predefinito iniziale di 5 e aumentano di 2 ad ogni aumento di livello. Una volta spesi su una statistica, la statistica stessa aumenta. I valori iniziali per i punti vita sono 500, mentre i valori iniziali per l'attacco e la difesa sono 1.
     - `ordinamentoPersonaggiGiocabili(String criterio)`: permette agli utenti di ordinare i personaggi giocabili in base a diversi criteri, come il nome o il livello.
 
 ### Repository:

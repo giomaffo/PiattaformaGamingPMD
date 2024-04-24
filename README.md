@@ -32,8 +32,8 @@ Le classi principali incluse in questo progetto sono:
     - `getAnnoPubblicazione()`: restituisce l'anno di pubblicazione del videogioco.
 
 - **PiattaformaGaming**: Rappresenta la piattaforma di gaming nel suo complesso.
-  - Attributi:
-    - private ArrayList<Videogioco> `videogiochi`: un elenco dei videogiochi presenti sulla piattaforma.
+  - Attributi (per ora ArrayList ma se troppo complicati, diverranno array, con seguente aggiunta di `numVideogiochi` e `numPersonaggiGiocabili` insieme al max di quest'ultimi)
+    - private ArrayList<Videogioco> `videogiochi`: un elenco dei videogiochi presenti sulla piattaforma. 
     - private ArrayList<PersonaggioGiocabile> `personaggiGiocabili`: un elenco dei personaggi giocabili presenti sulla piattaforma.
   - Metodi:
     - `aggiungiVideogioco(Videogioco videogioco)`: aggiunge un videogioco alla piattaforma.

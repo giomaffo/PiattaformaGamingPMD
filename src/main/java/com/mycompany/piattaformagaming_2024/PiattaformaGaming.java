@@ -8,6 +8,7 @@ package com.mycompany.piattaformagaming_2024;
  *
  * @author Studente
  */
+
 import java.util.ArrayList;
 
 public class PiattaformaGaming 

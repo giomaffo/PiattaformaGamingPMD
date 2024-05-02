@@ -22,13 +22,14 @@ class PersonaggioGiocabile {
     private LocalDateTime ultimaModifica;
 
     // Costruttore
-    public PersonaggioGiocabile(int id, String nome, int livello, int puntiVita, int attacco, int difesa) {
+    public PersonaggioGiocabile(int id, String nome) 
+    {
         this.id = id;
         this.nome = nome;
-        this.livello = livello;
-        this.puntiVita = puntiVita;
-        this.attacco = attacco;
-        this.difesa = difesa;
+        this.livello = 1;
+        this.puntiVita = 500;
+        this.attacco = 1;
+        this.difesa = 1;
         this.skillPoints = 5; // Valore iniziale degli skill points
         this.ultimaModifica = LocalDateTime.now();
     }
@@ -84,6 +85,14 @@ class PersonaggioGiocabile {
 
     public LocalDateTime getUltimaModifica() {
         return ultimaModifica;
+    }
+    
+    public String toString() 
+    {
+        return "PersonaggioGiocabile{" +
+            "nome='" + nome + '\'' +
+            ", livello=" + livello +
+            '}';
     }
 
 }

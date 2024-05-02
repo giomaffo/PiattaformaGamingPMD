@@ -8,93 +8,127 @@ package com.mycompany.piattaformagaming_2024;
  *
  * @author Studente
  */
+import java.util.ArrayList;
+
 public class PiattaformaGaming 
 {
-    private static final int MAX_VIDEOGIOCHI = 100;
-    private static final int MAX_PERSONAGGI_GIOCABILI = 100;
+    private ArrayList<Videogioco> videogiochi;
+    private ArrayList<PersonaggioGiocabile> personaggiGiocabili;
 
-    private Videogioco[] videogiochi = new Videogioco[MAX_VIDEOGIOCHI];
-    private PersonaggioGiocabile[] personaggiGiocabili = new PersonaggioGiocabile[MAX_PERSONAGGI_GIOCABILI];
-    private int numVideogiochi = 0;
-    private int numPersonaggiGiocabili = 0;
+    public PiattaformaGaming() {
+        this.videogiochi = new ArrayList<>();
+        this.personaggiGiocabili = new ArrayList<>();
+    }
 
-    // Metodi per aggiungere e rimuovere videogiochi
+    public PiattaformaGaming(PiattaformaGaming piattaformaGaming) {
+        this.videogiochi = new ArrayList<>(piattaformaGaming.videogiochi);
+        this.personaggiGiocabili = new ArrayList<>(piattaformaGaming.personaggiGiocabili);
+    }
+
     public void aggiungiVideogioco(Videogioco videogioco) {
-        if (numVideogiochi < MAX_VIDEOGIOCHI) {
-            videogiochi[numVideogiochi++] = videogioco;
-        } else {
-            System.out.println("Limite massimo di videogiochi raggiunto.");
-        }
+        videogiochi.add(videogioco);
     }
 
     public void rimuoviVideogioco(String titolo) {
-        for (int i = 0; i < numVideogiochi; i++) {
-            if (videogiochi[i].getTitolo().equals(titolo)) 
-            {
-                // Rimuove il videogioco spostando gli elementi successivi indietro di una posizione
-                for (int j = i; j < numVideogiochi - 1; j++) {
-                    videogiochi[j] = videogiochi[j + 1];
-                }
-                videogiochi[numVideogiochi - 1] = null; // Elimina l'ultimo elemento duplicato
-                numVideogiochi--;
-                System.out.println("Videogioco rimosso con successo.");
-                return;
-            }
+        Videogioco videogioco = cercaVideogioco(titolo);
+        if (videogioco != null) {
+            videogiochi.remove(videogioco);
         }
-        System.out.println("Videogioco non trovato.");
     }
 
     public Videogioco cercaVideogioco(String titolo) {
-        for (int i = 0; i < numVideogiochi; i++) {
-            if (videogiochi[i].getTitolo().equals(titolo)) {
-                return videogiochi[i];
+        for (Videogioco videogioco : videogiochi) {
+            if (videogioco.getTitolo().equals(titolo)) {
+                return videogioco;
             }
         }
         return null;
     }
 
-    // Metodi per aggiungere e rimuovere personaggi giocabili
     public void aggiungiPersonaggio(PersonaggioGiocabile personaggio) {
-        if (numPersonaggiGiocabili < MAX_PERSONAGGI_GIOCABILI) {
-            personaggiGiocabili[numPersonaggiGiocabili++] = personaggio;
-        } else {
-            System.out.println("Limite massimo di personaggi giocabili raggiunto.");
-        }
-    }
+        personaggiGiocabili.add(personaggio);
+}
 
     public void rimuoviPersonaggio(String nome) {
-        for (int i = 0; i < numPersonaggiGiocabili; i++) {
-            if (personaggiGiocabili[i].getNome().equals(nome)) {
-                // Rimuove il personaggio spostando gli elementi successivi indietro di una posizione
-                for (int j = i; j < numPersonaggiGiocabili - 1; j++) {
-                    personaggiGiocabili[j] = personaggiGiocabili[j + 1];
-                }
-                personaggiGiocabili[numPersonaggiGiocabili - 1] = null; // Elimina l'ultimo elemento duplicato
-                numPersonaggiGiocabili--;
-                System.out.println("Personaggio giocabile rimosso con successo.");
-                return;
-            }
+        PersonaggioGiocabile personaggio = cercaPersonaggio(nome);
+        if (personaggio != null) {
+            personaggiGiocabili.remove(personaggio);
         }
-        System.out.println("Personaggio giocabile non trovato.");
     }
 
     public PersonaggioGiocabile cercaPersonaggio(String nome) {
-        for (int i = 0; i < numPersonaggiGiocabili; i++) {
-            if (personaggiGiocabili[i].getNome().equals(nome)) {
-                return personaggiGiocabili[i];
+        for (PersonaggioGiocabile personaggio : personaggiGiocabili) {
+            if (personaggio.getNome().equals(nome)) {
+                return personaggio;
             }
         }
         return null;
     }
 
-    // Altri metodi della classe PiattaformaGaming
     public void ordinamentoVideogiochi(String criterio) {
         // Implementazione dell'ordinamento dei videogiochi
-        // Completamento alla fine del progetto
     }
 
     public void esportaDatiCSV() {
-        // Implementazione dell'esportazione dei dati in formato CSV
-        // Completamento alla fine del progetto
+        // Implementazione dell'esportazione dei dati dei videogiochi in un file CSV
+    }
+
+    public void importaDatiCSV(String nomeFile) {
+        // Implementazione dell'importazione dei dati dei videogiochi da un file CSV
+    }
+
+    public void aggiungiPersonaggioGiocabile(PersonaggioGiocabile personaggio, String titoloVideogioco) 
+    {
+        Videogioco videogioco = cercaVideogioco(titoloVideogioco);
+        if (videogioco != null) {
+            videogioco.aggiungiPersonaggio(personaggio);
+        }
+    }
+
+   public void eliminaPersonaggioGiocabile(String nomePersonaggio, String titoloVideogioco) 
+   {
+        Videogioco videogioco = cercaVideogioco(titoloVideogioco);
+        if (videogioco != null) 
+        {
+            PersonaggioGiocabile personaggio = videogioco.cercaPersonaggio(nomePersonaggio);
+            if (personaggio != null) 
+            {
+                videogioco.rimuoviPersonaggio(personaggio);
+            }
+            else 
+            {
+                System.out.println("Il personaggio " + nomePersonaggio + " non è presente nel videogioco " + titoloVideogioco + ".");
+            }
+        } 
+            else 
+        {
+            System.out.println("Il videogioco " + titoloVideogioco + " non è presente nella piattaforma.");
+        }
+    }
+    
+    public void visualizzaPersonaggiGiocabili(String titoloVideogioco) {
+        Videogioco videogioco = cercaVideogioco(titoloVideogioco);
+        if (videogioco != null) {
+            System.out.println("Personaggi giocabili del videogioco " + titoloVideogioco + ":");
+            ArrayList<PersonaggioGiocabile> personaggi = videogioco.getPersonaggiGiocabili();
+            for (PersonaggioGiocabile personaggio : personaggi) {
+                System.out.println("- " + personaggio.getNome());
+            }
+        } 
+        else {
+            System.out.println("Il videogioco " + titoloVideogioco + " non è presente nella piattaforma.");
+        }
+    }
+
+    public void ricercaPersonaggioGiocabile(String criterio, String valore) {
+        // Implementazione della ricerca di un personaggio giocabile in un videogioco
+    }
+
+    public void aggiornaDettagliPersonaggioGiocabile(String nomePersonaggio, String attributo, int valore) {
+        // Implementazione dell'aggiornamento dei dettagli di un personaggio giocabile
+    }
+
+    public void ordinamentoPersonaggiGiocabili(String criterio) {
+        // Implementazione dell'ordinamento dei personaggi giocabili
     }
 }

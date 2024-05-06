@@ -58,6 +58,7 @@ public class PersonaggioGiocabile implements Serializable
 
     public void setLivello(int livello) {
         this.livello = livello;
+        this.ultimaModifica = LocalDateTime.now();
     }
 
     public int getPuntiVita() {
@@ -66,6 +67,7 @@ public class PersonaggioGiocabile implements Serializable
 
     public void setPuntiVita(int puntiVita) {
         this.puntiVita = puntiVita;
+        this.ultimaModifica = LocalDateTime.now();
     }
 
     public int getAttacco() {
@@ -74,6 +76,7 @@ public class PersonaggioGiocabile implements Serializable
 
     public void setAttacco(int attacco) {
         this.attacco = attacco;
+        this.ultimaModifica = LocalDateTime.now();
     }
 
     public int getDifesa() {
@@ -82,6 +85,7 @@ public class PersonaggioGiocabile implements Serializable
 
     public void setDifesa(int difesa) {
         this.difesa = difesa;
+        this.ultimaModifica = LocalDateTime.now();
     }
     
     public LocalDateTime getUltimaModifica()
@@ -89,7 +93,9 @@ public class PersonaggioGiocabile implements Serializable
         return this.ultimaModifica;
     }
 
+    @Override
     public String toString() {
-        return nome + ";" + livello + ";" + attacco + ";" + difesa + ";" + puntiVita + ";" + id;
+        return getId() + ";" + getNome() + ";" + getLivello() + ";" + getPuntiVita() + ";" + getAttacco() + ";" + getDifesa();
     }
+
 }

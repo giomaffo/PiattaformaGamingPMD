@@ -3,215 +3,53 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/*
+
 package com.mycompany.piattaformagaming_2024.utilita;
 
+import com.mycompany.piattaformagaming_2024.PersonaggioGiocabile;
 
 
-/**
- *
- * @author gian
- */
-/*
-public class Ordinatore 
-{
-    
-    public static void scambia(int[] a, int pos1, int pos2)
-    {
-        int s;
-        s=a[pos1];
-        a[pos1]=a[pos2];
-        a[pos2]=s;
-    }
-    
-    
-     
-    public static void scambia(String[] a, int pos1, int pos2)
-    {
-        String s;
-        s=a[pos1];
-        a[pos1]=a[pos2];
-        a[pos2]=s;
-    }
-    
-    
-    
-    public static void scambiaLibri(Libro[] a, int pos1, int pos2)
-    {
-        Libro s;
-        s=a[pos1];
-        a[pos1]=a[pos2];
-        a[pos2]=s;
-    }
-    
-    
-    public static int[] selectionSortCrescente (int[] a)
-    {
-        int v[]= new int[a.length];
-        int lunghezza=v.length;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
-        }
-        
-        for (int i=0;i<lunghezza-1;i++)
-        {
-            for(int j=i+1;j<lunghezza;j++)
-            {
-                if (v[j]<v[i])
-                    scambia(v, i, j);
-            }
-        }       
-        return v;    
-    }
-    
-    
-    
-    public static int[] selectionSortDecrescente (int[] a)
-    {
-        int v[]= new int[a.length];
-        int lunghezza=v.length;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
-        }
-        
-        for (int i=0;i<lunghezza-1;i++)
-        {
-            for(int j=i+1;j<lunghezza;j++)
-            {
-                if (v[j]>v[i])
-                    scambia(v, i, j);
-            }
-        }       
-        return v;    
-    }
-   
-     
-    public static String[] selectionSortCrescente (String[] a)
-    {
-        String v[]= new String[a.length];
-        int lunghezza=v.length;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
-        }
-        
-        for (int i=0;i<lunghezza-1;i++)
-        {
-            for(int j=i+1;j<lunghezza;j++)
-            {
-                if (v[j].compareTo(v[i])<0)
-                    scambia(v, i, j);
-            }
-        }       
-        return v;    
-    }
-    
-    
-    
-    public static String[] selectionSortDecrescente (String[] a)
-    {
-        String v[]= new String[a.length];
-        int lunghezza=v.length;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
-        }
-        
-        for (int i=0;i<lunghezza-1;i++)
-        {
-            for(int j=i+1;j<lunghezza;j++)
-            {
-                if (v[j].compareTo(v[i])>0)
-                    scambia(v, i, j);
-            }
-        }       
-        return v;    
-    }
-    
-    
-    public static int[] bubbleSortCrescente(int[] a)
-    {
-        int v[]= new int[a.length];
-        int lunghezza=v.length;
-        boolean scambioAvvenuto;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
-        }
-        
-        do
-        {
-            scambioAvvenuto=false;
-            for(int i=0;i<lunghezza-1;i++)
-            {
-                if (v[i]>v[i+1])
-                {
-                    scambia(v, i, i+1);
-                    scambioAvvenuto=true;
+
+public class Ordinatore {
+
+    // Altri metodi della classe Ordinatore...
+
+    /**
+     * Ordina in ordine decrescente i personaggi di un array
+     * utilizzando l'algoritmo selection sort basato sul livello.
+     *
+     * @param personaggi l'array di PersonaggioGiocabile da ordinare
+     * @return un array ordinato in ordine decrescente per livello
+     */
+    public static PersonaggioGiocabile[] selectionSortPerLivelloDecrescente(PersonaggioGiocabile[] personaggi) {
+        PersonaggioGiocabile[] copia = copiaArray(personaggi);
+        int lunghezza = copia.length;
+
+        for (int i = 0; i < lunghezza - 1; i++) {
+            int indiceMaxLivello = i;
+            for (int j = i + 1; j < lunghezza; j++) {
+                if (copia[j].getLivello() > copia[indiceMaxLivello].getLivello()) {
+                    indiceMaxLivello = j;
                 }
             }
-        }while (scambioAvvenuto);
-        return v;
-    }
-    
-     public static int[] bubbleSortDecrescente(int[] a)
-    {
-        int v[]= new int[a.length];
-        int lunghezza=v.length;
-        boolean scambioAvvenuto;
-        
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]=a[i];
+            scambiaPersonaggi(copia, i, indiceMaxLivello);
         }
-        
-        do
-        {
-            scambioAvvenuto=false;
-            for(int i=0;i<lunghezza-1;i++)
-            {
-                if (v[i]>v[i+1])
-                {
-                    scambia(v, i, i+1);
-                    scambioAvvenuto=true;
-                }
-            }
-        }while (scambioAvvenuto);
-        return v;
+        return copia;
     }
-     
-     
-     
-     
-     
-    public static Libro[] selectionSortCrescenteLibri (Libro[] a)
-    {
-        Libro v[]= new Libro[a.length];
-        int lunghezza=v.length;
-        //creo una copia di a
-        for(int i=0;i<v.length;i++)
-        {
-            v[i]= new Libro(a[i]);      
+
+    // Metodo di supporto per creare una copia dell'array di PersonaggioGiocabile
+    private static PersonaggioGiocabile[] copiaArray(PersonaggioGiocabile[] array) {
+        PersonaggioGiocabile[] copia = new PersonaggioGiocabile[array.length];
+        for (int i = 0; i < array.length; i++) {
+            copia[i] = new PersonaggioGiocabile(array[i]);
         }
-        
-        for (int i=0;i<lunghezza-1;i++)
-        {
-            for(int j=i+1;j<lunghezza;j++)
-            {
-                if (v[j].getTitolo().compareToIgnoreCase(v[i].getTitolo())<0)
-                    scambiaLibri(v, i, j);
-            }
-        }       
-        return v;    
-    } 
-    
+        return copia;
+    }
+
+    // Metodo di supporto per scambiare due personaggi in un array
+    private static void scambiaPersonaggi(PersonaggioGiocabile[] array, int posizione1, int posizione2) {
+        PersonaggioGiocabile temp = array[posizione1];
+        array[posizione1] = array[posizione2];
+        array[posizione2] = temp;
+    }
 }
-*/

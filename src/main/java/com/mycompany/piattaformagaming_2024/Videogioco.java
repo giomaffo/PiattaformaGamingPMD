@@ -5,44 +5,32 @@
 package com.mycompany.piattaformagaming_2024;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class Videogioco implements Serializable 
-{
+public class Videogioco implements Serializable {
+
     private String titolo;
-    private ArrayList<PersonaggioGiocabile> personaggi;
+    private String genere;
+    private int annoPubblicazione;
+    private PersonaggioGiocabile[] personaggiGiocabili;
+    private final static int NUM_MAX_PERSONAGGI = 15;
 
-    public Videogioco() {
-        this.personaggi = new ArrayList<>();
+    public Videogioco(String titolo, String genere, int annoPubblicazione) {
+        this.titolo = titolo;
+        this.genere = genere;
+        this.annoPubblicazione = annoPubblicazione;
+        this.personaggiGiocabili = new PersonaggioGiocabile[NUM_MAX_PERSONAGGI];
     }
 
     public Videogioco(Videogioco videogioco) {
         this.titolo = videogioco.getTitolo();
-        this.personaggi = new ArrayList<>(videogioco.getPersonaggi());
-    }
-
-    public void aggiungiPersonaggio(PersonaggioGiocabile personaggio) {
-        personaggi.add(personaggio);
-    }
-
-    public void rimuoviPersonaggio(String nome) {
-        PersonaggioGiocabile daRimuovere = null;
-        for (PersonaggioGiocabile personaggio : personaggi) {
-            if (personaggio.getNome().equalsIgnoreCase(nome)) {
-                daRimuovere = personaggio;
-                break;
+        this.genere = videogioco.getGenere();
+        this.annoPubblicazione = videogioco.getAnnoPubblicazione();
+        this.personaggiGiocabili = new PersonaggioGiocabile[NUM_MAX_PERSONAGGI];
+        for (int i = 0; i < NUM_MAX_PERSONAGGI; i++) {
+            if (videogioco.getPersonaggiGiocabili()[i] != null) {
+                this.personaggiGiocabili[i] = new PersonaggioGiocabile(videogioco.getPersonaggiGiocabili()[i]);
             }
         }
-        if (daRimuovere != null) {
-            personaggi.remove(daRimuovere);
-            System.out.println("Personaggio rimosso con successo.");
-        } else {
-            System.out.println("Personaggio non trovato.");
-        }
-    }
-
-    public ArrayList<PersonaggioGiocabile> getPersonaggi() {
-        return personaggi;
     }
 
     public String getTitolo() {
@@ -53,11 +41,50 @@ public class Videogioco implements Serializable
         this.titolo = titolo;
     }
 
-    public String toString() {
-        String s = "Videogioco: " + titolo + "\n";
-        for (PersonaggioGiocabile personaggio : personaggi) {
-            s += personaggio.toString() + "\n";
+    public String getGenere() {
+        return genere;
+    }
+
+    public void setGenere(String genere) {
+        this.genere = genere;
+    }
+
+    public int getAnnoPubblicazione() {
+        return annoPubblicazione;
+    }
+
+    public void setAnnoPubblicazione(int annoPubblicazione) {
+        this.annoPubblicazione = annoPubblicazione;
+    }
+
+    public PersonaggioGiocabile[] getPersonaggiGiocabili() {
+        return personaggiGiocabili;
+    }
+
+    public void aggiungiPersonaggio(PersonaggioGiocabile personaggio) {
+        for (int i = 0; i < NUM_MAX_PERSONAGGI; i++) {
+            if (personaggiGiocabili[i] == null) {
+                personaggiGiocabili[i] = personaggio;
+                break;
+            }
         }
-        return s;
+    }
+
+    public void rimuoviPersonaggio(PersonaggioGiocabile personaggio) {
+        for (int i = 0; i < NUM_MAX_PERSONAGGI; i++) {
+            if (personaggiGiocabili[i] == personaggio) {
+                personaggiGiocabili[i] = null;
+                break;
+            }
+        }
+    }
+
+    public PersonaggioGiocabile cercaPersonaggio(String nome) {
+        for (PersonaggioGiocabile personaggio : personaggiGiocabili) {
+            if (personaggio != null && personaggio.getNome().equals(nome)) {
+                return personaggio;
+            }
+        }
+        return null;
     }
 }

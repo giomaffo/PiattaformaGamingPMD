@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-/*
+
 package com.mycompany.piattaformagaming_2024;
 
 /**
@@ -14,8 +14,8 @@ package com.mycompany.piattaformagaming_2024;
 public class App {
 
     public static void main(String[] args) {
-        
-        P piattaforma = new P();
+         Creazione della piattaforma di gioco
+        PiattaformaGaming piattaforma = new PiattaformaGaming();
 
         // Creazione del menu
         Menu menu = new Menu();

@@ -181,4 +181,22 @@ public class PersonaggioGiocabile implements Serializable {
     public String toString() {
         return getId() + ";" + getNome() + ";" + getLivello() + ";" + getPuntiVita() + ";" + getAttacco() + ";" + getDifesa();
     }
+    /**
+    * Determina se questo personaggio giocabile è uguale a un altro oggetto.
+    * Due personaggi giocabili sono considerati uguali se hanno lo stesso ID.
+    *
+    * @param o l'oggetto da confrontare con questo personaggio giocabile
+    * @return true se l'oggetto specificato è uguale a questo personaggio giocabile,
+    *         false altrimenti
+    */
+    @Override
+    public boolean equals(Object o)
+    {
+        PersonaggioGiocabile personaggio;
+        personaggio=(PersonaggioGiocabile)o;
+        if (personaggio.getAttacco()==getAttacco() && personaggio.getPuntiVita()==getPuntiVita() && personaggio.getNome()==getNome() && personaggio.getDifesa()==getDifesa())
+            return true;
+        else
+            return false;
+    }
 }

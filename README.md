@@ -2,54 +2,51 @@
 
 ## Benvenuti nel progetto PiattaformaGaming!
 
-### Descrizione:
+# README - Classi Videogioco e PersonaggioGiocabile
 
-Questo progetto ha lo scopo di creare una piattaforma di gaming completa con tutte le funzionalità necessarie per gestire videogiochi e personaggi giocabili.
+## Videogioco
 
-### Classi:
+La classe Videogioco rappresenta un videogioco all'interno della piattaforma di gaming. Contiene metodi per gestire i personaggi giocabili presenti nel videogioco.
 
-Le classi principali incluse in questo progetto sono:
+### Attributi:
 
-- **PersonaggioGiocabile**: Rappresenta i personaggi giocabili all'interno dei videogiochi.
-  - Attributi:
-    - private int `id`: identificatore univoco del personaggio.
-    - private String `nome`: il nome del personaggio giocabile.
-    - private int `livello`: il livello del personaggio giocabile.
-    - private int `puntiVita`: i punti vita del personaggio giocabile.
-    - private int `attacco`: il valore di attacco del personaggio giocabile.
-    - private int `difesa`: il valore di difesa del personaggio giocabile.
-    - private int `skillPoints`: gli skill points disponibili per l'utente.
-    - private LocalDateTime `ultimaModifica`: un attributo che tiene traccia della data e dell'ora dell'ultima modifica apportata al personaggio giocabile.
+- `personaggiGiocabili`: array di personaggi giocabili presenti nel videogioco.
+- `NUM_MAX_PERSONAGGI`: attributo statico che rappresenta il numero massimo di personaggi giocabili nel videogioco.
+- `numeroPersonaggiPresenti`: numero attuale di personaggi presenti nel videogioco.
 
-- **Videogioco**: Rappresenta i videogiochi disponibili sulla piattaforma.
-  - Attributi:
-    - private String `titolo`: il titolo del videogioco.
-    - private String `genere`: il genere del videogioco.
-    - private int `annoPubblicazione`: l'anno di pubblicazione del videogioco.
-  - Metodi:
-    - `getTitolo()`: restituisce il titolo del videogioco.
-    - `getGenere()`: restituisce il genere del videogioco.
-    - `getAnnoPubblicazione()`: restituisce l'anno di pubblicazione del videogioco.
+### Metodi Principali:
 
-- **PiattaformaGaming**: Rappresenta la piattaforma di gaming nel suo complesso.
-  - Attributi (per ora ArrayList ma se troppo complicati, diverranno array, con seguente aggiunta di `numVideogiochi` e `numPersonaggiGiocabili` insieme al max di quest'ultimi)
-    - private ArrayList<Videogioco> `videogiochi`: un elenco dei videogiochi presenti sulla piattaforma. 
-    - private ArrayList<PersonaggioGiocabile> `personaggiGiocabili`: un elenco dei personaggi giocabili presenti sulla piattaforma.
-  - Metodi:
-    - `aggiungiVideogioco(Videogioco videogioco)`: aggiunge un videogioco alla piattaforma.
-    - `rimuoviVideogioco(String titolo)`: rimuove un videogioco dalla piattaforma.
-    - `cercaVideogioco(String titolo)`: cerca un videogioco nella piattaforma.
-    - `aggiungiPersonaggio(PersonaggioGiocabile personaggio)`: aggiunge un personaggio giocabile alla piattaforma.
-    - `rimuoviPersonaggio(String nome)`: rimuove un personaggio giocabile dalla piattaforma.
-    - `cercaPersonaggio(String nome)`: cerca un personaggio giocabile nella piattaforma.
-    - `ordinamentoVideogiochi(String criterio)`: permette agli utenti di ordinare i videogiochi in base a diversi criteri, come il titolo o il genere.
-    - `esportaDatiCSV()`: consente agli utenti di esportare i dati dei videogiochi presenti nella piattaforma in un file CSV.
-    - `importaDatiCSV(String nomeFile)`: consente agli utenti di importare i dati dei videogiochi da un file CSV nella piattaforma.
-    - `aggiungiPersonaggioGiocabile(PersonaggioGiocabile personaggio, String titoloVideogioco)`: permette allo sviluppatore del gioco di aggiungere un nuovo personaggio giocabile a un videogioco esistente.
-    - `eliminaPersonaggioGiocabile(String nomePersonaggio, String titoloVideogioco)`: consente allo sviluppatore del gioco di eliminare un personaggio giocabile da un videogioco.
-    - `ricercaPersonaggioGiocabile(String criterio, String valore)`: consente agli utenti di cercare un personaggio giocabile in un videogioco in base al nome o alla classe.
-   - `aggiornaDettagliPersonaggioGiocabile(String nomePersonaggio, String attributo, int valore)`: permette agli utenti di aggiornare i dettagli di un personaggio giocabile, come ad esempio i punti vita,     l'attacco o la difesa. Gli skill points sono un valore predefinito iniziale di 5 e aumentano di 2 ad ogni aumento di livello. Una volta spesi su una statistica, la statistica stessa aumenta. I valori iniziali per i punti vita sono 500, mentre i valori iniziali per l'attacco e la difesa sono 1.
-    - `ordinamentoPersonaggiGiocabili(String criterio)`: permette agli utenti di ordinare i personaggi giocabili in base a diversi criteri, come il nome o il livello.
+- `aggiungiPersonaggio(PersonaggioGiocabile personaggio)`: aggiunge un personaggio giocabile al videogioco.
+- `eliminaPersonaggio(int codice)`: elimina un personaggio giocabile dal videogioco in base al codice identificativo.
+- `cercaPersonaggio(String nome)`: cerca un personaggio giocabile nel videogioco per nome.
+- `cercaPersonaggioPerId(int id)`: cerca un personaggio giocabile nel videogioco per ID.
+- `esportaCSV(String fileName)`: esporta i personaggi giocabili del videogioco in un file CSV.
+- `importaCSV(String fileName)`: importa i personaggi giocabili da un file CSV nel videogioco.
+- `salvaVideogioco(String fileName)`: salva lo stato corrente del videogioco in un file.
+- `caricaVideogioco(String fileName)`: carica lo stato del videogioco da un file.
+- `visualizzaPersonaggi()`: visualizza tutti i personaggi giocabili presenti nel videogioco.
+
+# README - Classe PersonaggioGiocabile
+
+La classe PersonaggioGiocabile rappresenta un personaggio giocabile all'interno di un videogioco. Contiene tutti gli attributi e metodi necessari per gestire un personaggio giocabile.
+
+### Attributi:
+
+- `id`: identificativo univoco del personaggio.
+- `nome`: nome del personaggio.
+- `livello`: livello del personaggio.
+- `puntiVita`: punti vita del personaggio.
+- `attacco`: valore di attacco del personaggio.
+- `difesa`: valore di difesa del personaggio.
+- `ultimaModifica`: data e ora dell'ultima modifica al personaggio.
+
+### Metodi Principali:
+
+- Costruttori per la creazione di un nuovo personaggio giocabile.
+- Metodi getter e setter per ogni attributo.
+- `toString()`: restituisce una stringa rappresentante il personaggio giocabile.
+- `equals(Object o)`: determina se questo personaggio giocabile è uguale a un altro oggetto.
+
 
 ### Repository:
 

@@ -55,6 +55,7 @@ public class App implements Serializable
         vociMenu[8]="8- salva filebin";
         vociMenu[9]="9- carica filebin";
         vociMenu[10]="10- visualizza ultima modifica";
+        vociMenu[11]="11- visualizza tutti i personaggi";
         
         Menu menu=new Menu(vociMenu);
         
@@ -281,6 +282,11 @@ public class App implements Serializable
                                 {
                                     System.out.println("Personaggio non trovato.");
                                 }
+                                break;
+                            case 11:
+                                // Visualizza tutti i personaggi
+                                System.out.println("Lista dei personaggi:");
+                                v.visualizzaPersonaggi();
                                 break;
                     }
             }

@@ -281,4 +281,20 @@ public class Videogioco implements Serializable {
        reader.close();
        return v;
     }
+    
+    /**
+    * Metodo che visualizza tutti i personaggi giocabili presenti nel videogioco.
+    */
+    public void visualizzaPersonaggi() {
+       if (numeroPersonaggiPresenti == 0) {
+           System.out.println("Nessun personaggio presente.");
+       } else {
+           System.out.println("Elenco dei personaggi giocabili:");
+           for (PersonaggioGiocabile personaggio : personaggiGiocabili) {
+               if (personaggio != null) {
+                   System.out.println(personaggio);
+               }
+           }
+       }
+   }
 }

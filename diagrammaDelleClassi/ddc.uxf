@@ -1,0 +1,45 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>870</x><y>80</y><w>310</w><h>340</h></coordinates><panel_attributes>PersonaggioGiocabile     
+--
+ - id: int                     
+ - nome: String                
+ - livello: int                
+ - puntiVita: int              
+ - attacco: int                
+ - difesa: int                 
+ - ultimaModifica: LocalDateTime 
+--
+ + getId(): int                      
+ + getNome(): String                 
+ + getLivello(): int                 
+ + getPuntiVita(): int               
+ + getAttacco(): int                 
+ + getDifesa(): int                  
+ + getUltimaModifica(): LocalDateTime 
+ + setId(id: int): void              
+ + setNome(nome: String): void       
+ + setLivello(livello: int): void    
+ + setPuntiVita(puntiVita: int): void 
+ + setAttacco(attacco: int): void    
+ + setDifesa(difesa: int): void      </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>90</y><w>490</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+r1=NUM_MAX_PERSONAGGI		-personaggiGiocabili: PersonaggioGiocabile[]
+r2= 1</panel_attributes><additional_attributes>10;20;470;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>60</y><w>280</w><h>290</h></coordinates><panel_attributes> Videogioco           
+--
+ - personaggiGiocabili: PersonaggioGiocabile[] 
+ - NUM_MAX_PERSONAGGI: int                    
+|- numeroPersonaggiPresenti: int              
+--
+ + getPersonaggiGiocabili(): PersonaggioGiocabile[] 
+ + getNUM_MAX_PERSONAGGI(): int                       
+ + getNumeroPersonaggiPresenti(): int                 
+ + getNumPersonaggiGiocabili(): int                   
+ + getCodice(posizione: int): int                     
+ + aggiungiPersonaggio(personaggio: PersonaggioGiocabile): void 
+ + eliminaPersonaggio(codice: int): int               
+ + cercaPersonaggio(nome: String): PersonaggioGiocabile 
+ + cercaPersonaggioPerId(id: int): PersonaggioGiocabile
+ + esportaCSV(fileName: String): void                  
+ + importaCSV(fileName: String): void                  
+ + salvaVideogioco(fileName: String): void             
+ + caricaVideogioco(fileName: String): Videogioco      
+ + visualizzaPersonaggi(): void                        
+--</panel_attributes><additional_attributes></additional_attributes></element></diagram>

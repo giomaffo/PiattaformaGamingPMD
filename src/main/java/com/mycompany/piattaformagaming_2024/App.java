@@ -26,7 +26,7 @@ public class App implements Serializable
 {
     public static void main(String[] args) 
     {
-        String[] vociMenu=new String[11];
+        String[] vociMenu=new String[12];
         int sceltaUtente=-1;
         Scanner tastiera=new Scanner(System.in);
         
@@ -40,7 +40,7 @@ public class App implements Serializable
         //LocalDate data;
         int giorno,mese,anno;
         
-        String nomeFile="videogioco.txt";
+        String nomeFile="videogioco.csv";
         String nomeFileBin="videogioco.bin";
         
         
@@ -213,22 +213,16 @@ public class App implements Serializable
                                 }
                                 break;
                             case 6:
-                                // Esportazione CSV
-                                System.out.print("Inserisci il nome del file CSV per l'esportazione: ");
-                                String nomeFileEsportazione = tastiera.nextLine();
                                 try {
-                                    v.esportaCSV(nomeFileEsportazione);
+                                    v.esportaCSV(nomeFile);
                                     System.out.println("Esportazione completata con successo!");
                                 } catch (IOException | FileException e) {
                                     System.out.println("Errore durante l'esportazione: " + e.getMessage());
                                 }
                                 break;
                             case 7:
-                                // Importazione CSV
-                                System.out.print("Inserisci il nome del file CSV da cui importare: ");
-                                String nomeFileImportazione = tastiera.nextLine();
                                 try {
-                                    v.importaCSV(nomeFileImportazione);
+                                    v.importaCSV(nomeFile);
                                     System.out.println("Importazione completata con successo!");
                                 } catch (IOException e) {
                                     System.out.println("Errore durante l'importazione: " + e.getMessage());
@@ -265,7 +259,7 @@ public class App implements Serializable
                                 break;
                             case 10:
                                 // Visualizza l'ultima modifica delle statistiche di un personaggio cercato per ID
-                                System.out.print("Inserisci l'ID del personaggio da modificare: ");
+                                System.out.print("Inserisci l'ID del personaggio che si desidera visualizzare: ");
                                 int idPersonaggioDaVisualizzare = tastiera.nextInt();
                                 tastiera.nextLine(); // Consuma il newline
 
